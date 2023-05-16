@@ -1,0 +1,81 @@
+import { OrderRequestEntity } from '@procurenetworks/inter-service-contracts';
+
+export const transformOrderRequestV2toV1 = (orderRequest: OrderRequestEntity.ExpandedOrderRequestType): any => {
+  const transformedOrderRequest = {
+    ...orderRequest,
+    bill_to: orderRequest.billToSiteId,
+    bill_to_name: orderRequest.billToSiteName,
+    created_at: orderRequest.createdAt,
+    created_by: orderRequest.createdById,
+    created_by_name: `${orderRequest.requestor?.firstName} ${orderRequest.requestor?.lastName || ''}`.trim(),
+    deleted_at: orderRequest.deletedAt,
+    deliver_to: orderRequest.deliverToId,
+    deliver_to_name: `${orderRequest.recipient?.firstName} ${orderRequest.recipient?.lastName || ''}`.trim(),
+    department_id: orderRequest.departmentId,
+    department_name: orderRequest.departmentName,
+    due_date: orderRequest.dueDate,
+    fulfillingSites: orderRequest.fulfillingSites?.map((site) => ({
+      from_site: site.siteId,
+      from_site_name: site.siteName,
+    })),
+    email: orderRequest.requestor?.emailId,
+    items: orderRequest.items.map((orderRequestItem) => ({
+      __v: orderRequestItem.__v,
+      _id: orderRequestItem._id,
+      category_id: orderRequestItem.categoryId,
+      cost: orderRequestItem.cost,
+      created_at: orderRequestItem.createdAt,
+      created_by: orderRequestItem.createdById,
+      description: orderRequestItem.description,
+      fromSite: orderRequestItem.fromSiteId,
+      image_url: orderRequestItem.imageUrl,
+      item_id: orderRequestItem.itemId,
+      locations: (orderRequestItem as any).locations,
+      nonRemovableNotes: orderRequestItem.nonRemovableNotes,
+      note: orderRequestItem.note,
+      order_request_id: orderRequestItem.orderRequestId,
+      parentOrderRequestItemId: orderRequestItem.parentOrderRequestItemId,
+      project_id: orderRequestItem.projectId,
+      project_name: orderRequestItem.projectName,
+      quantity: orderRequestItem.quantity,
+      sku: orderRequestItem.sku,
+      status: orderRequestItem.status,
+      status_history: orderRequestItem.statusHistory,
+      tenantId: orderRequestItem.tenantId,
+      title: orderRequestItem.title,
+      trackingDetails: orderRequestItem.trackingDetails,
+      trackingHistory: orderRequestItem.trackingHistory,
+      type: orderRequestItem.type,
+      upc_code: orderRequestItem.upcCode,
+      updated_at: orderRequestItem.updatedAt,
+      updated_by: orderRequestItem.updatedById,
+      website: orderRequestItem.website,
+    })),
+    leastItemStatus: orderRequest.leastItemStatus,
+    order_request_code: orderRequest.orderRequestCode,
+    ship_to: orderRequest.destinationSiteId,
+    ship_to_name: orderRequest.destinationSiteName,
+    status: orderRequest.status,
+    tenant_id: orderRequest.tenantId,
+    updated_at: orderRequest.updatedAt,
+  };
+  return transformedOrderRequest;
+};
+
+export const transformPaginatedOrderRequestPayload = (
+  payload: OrderRequestEntity.GetPaginatedExpandedOrderRequestsPayload,
+): any => {
+  return {
+    docs: payload.documents.map(transformOrderRequestV2toV1),
+    hasNextPage: payload.hasNextPage,
+    hasPreviousPage: payload.hasPreviousPage,
+    limit: payload.limit,
+    nextPage: payload.nextPage,
+    offset: payload.skip,
+    page: payload.currentPage,
+    pagingCounter: payload.skip + 1,
+    prevPage: payload.previousPage,
+    totalDocs: payload.totalDocuments,
+    totalPages: payload.totalPages,
+  };
+};

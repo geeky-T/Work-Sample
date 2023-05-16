@@ -1,0 +1,1 @@
+export * from './assetItem.schema';
