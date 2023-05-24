@@ -1,4 +1,4 @@
-This a sample of my work from professional repositories. I've removed sensitive information/proprietary content from te code. The attachment/repository contains two parts.
+This a sample of my work from professional repositories. I've removed sensitive information/proprietary content from the code. The attachment/repository contains two parts.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Application - Part
 
