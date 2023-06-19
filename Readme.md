@@ -1,6 +1,6 @@
-This a sample of my work from professional repositories. I've removed sensitive information/proprietary content from the code. The attachment/repository contains two parts.
+This is a sample of my work from professional repositories. I've removed sensitive information/proprietary content from the code. The attachment/repository contains two parts.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Application - Part
+## Backend Application - Part
 
 The application part is a subsection of part of the micro-service-based application. It is organized in a three-layer convention that follows the controller, service, and model format.
 
@@ -37,10 +37,9 @@ It is a small part of complete data modeling that is done using common code for 
 > All these services interact with each other using Google Remote Procedure Calls (gRPC) which reduces latency and improves performance in interaction among them. It also makes it easier to find and isolate errors during debugging of a bug. If required I can provide a sample of the definition for gRPC contracts and their typing. \
 
 Recruiters please write to me if you have any further questions or need any explanation about them.
-I am reachable at "pateltirth001@gmail.com"
+I am reachable at [EmailMe](mailto:pateltirth001@gmail.com) or [Linked Profile](https://www.linkedin.com/in/pateltirth001)
 
 Thank you for your consideration and looking forward to hearing from you soon
 
 Regards,
-
 Tirth S. Patel
